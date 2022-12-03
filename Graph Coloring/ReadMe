@@ -1,1 +1,33 @@
+I have used genetic algorithms (GAs) to solve the graph coloring problem. The problem takes as input a graph G=(V,E) and an integer k which designates
+the numbers of different colors (labels) to be used. A sucessful coloring assigns each vertex v in V a color in {1,2,3,...,k} such that all adjacent 
+vertices have different colors (i.e. for all vertices v in V if there exists an edge e in E between v_1 and v_2 then v_1 and v_2 must have different colors).
+The general problem of graph coloring is computationally intractable for k>2, so we will use the GA to search heuristically for solutions. 
+
+
+The input for each graph will be a file. The first line of each file will indicate how many nodes there are in the graph, n, and the second line will 
+indicate how many colors to use, k, and the remainder of the file will be a list of edges represented as ordered pairs (the two connected vertices 
+seperated by a space) with ones edge per line. 
+
+
+![Graph Representation](Images/graph_representation.png)
+
+
+To support this representation I will use two classes. First, the AdjNode class will be used to represent the nodes of the graph. This class has three 
+attributes, the value of the vertex, the first adjacent node in the list, and the color of the node. The second class is Graph and will be used to store 
+all of the nodes and their adjacency lists. The Graph class has three attributes, the number of nodes 𝑛, the number of colors 𝑘 and the array graph that 
+will store the nodes. Additionally, there is a helper function add_edge(s,d), that when supplied with two nodes (s and d) will add an edge to the graph.
+
+init_graph(file) creates a graph from a text file. Input is the path of the file and output is a graph object.
+
+is_valid checks whether a given color lies in the range of allowed colors, that is in [0,k]. Inputs are the color n and k.
+
+For each individual, we want to know how close its encoded coloring is to a legal coloring of the graph (recall, a legal coloring is one where no nodes 
+connected by an edge have the same color). Let $G=(V,E)$ be a graph with $n$ nodes and $m$ edges. If $c(i)$ is the assigned color of node $i$, then a 
+coloring of a graph is $C(i)=\{c(0),c(1),...c(n)\}$. For a given edge $i,j\in E$, let the function $\delta(i,j) = 1$ if $c(i)\not=c(j)$, and $\delta(i,j)=0$
+if $c(i)=c(j)$. A natural fitness function then is:
+
+$$F(C(G)) = \frac{\sum_{i,j\in E} \delta(i,j)}{m}$$
+
+That is the fraction of edges where the endpoints do not share the same color, divided by the total number of edges.
+
 
