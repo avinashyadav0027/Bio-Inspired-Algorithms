@@ -9,7 +9,7 @@ indicate how many colors to use, k, and the remainder of the file will be a list
 seperated by a space) with ones edge per line. 
 
 
-![Graph Representation](Images/graph_representation.png)
+![Graph Representation](http://github.com/avinashyadav0027/Bio-Inspired-Algorithms/Images/graph_representation.png)
 
 
 To support this representation I will use two classes. First, the AdjNode class will be used to represent the nodes of the graph. This class has three 
