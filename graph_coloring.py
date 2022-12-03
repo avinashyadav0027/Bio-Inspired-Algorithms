@@ -35,7 +35,7 @@ creator.create("Individual", list, fitness=creator.FitnessMax)
 
 # ### File I/O and Graph Data Structure
 # 
-# Before creating individuals, we first must read in an arbitrary graph from into a data structure. We will use an adjacency list representation to easily access the graph.  An adjacency list represents a graph as an array of linked lists. Each node in the graph will have a linked list of all it's adjacent nodes. The structure of this list will allow for an efficient way to check if two nodes share an edge.
+# Before creating individuals, we first must read in an arbitrary graph  into a data structure. We will use adjacency list representation.  
 
 # To support this representation we will use two classes. First, the `AdjNode` class will be used to represent the nodes of the graph. This class has three attributes, the value of the vertex, the first adjacent node in the list, and the color of the node. The second class is `Graph` and will be used to store all of the nodes and their adjacency lists. The `Graph` class has three attributes, the number of nodes n, the number of colors $k$ and the array `graph` that will store the nodes. Additionally, there is a helper function `add_edge(s,d)`, that when supplied with two nodes (`s` and `d`) will add an edge to the graph.
 
@@ -110,13 +110,6 @@ def init_graph(file):
     
     
     return g
-
-
-
-'''
-Check that the init graph function is correct. 
-Hidden test cases test on graphs in the graphs/ directory. 
-'''
 
 
 # ### Creating Individuals
@@ -211,7 +204,7 @@ def eval_graph(graph, individual):
 
 
 
-# ### Update Toolbox and Evolve Population
+#  Update Toolbox and Evolve Population
 # 
 # ``cxpb`` is the probability with which two individuals are crossed, ``mutpb`` is the probability for mutating an individual, ``indpb`` is the the independent probability of each attribute to be mutated, ``tournsize`` is the size of each tournament, ``n`` is the population size, and  ``ngen`` is the number of generations. 
 
